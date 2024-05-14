@@ -3,6 +3,8 @@ const { errorHandlerMiddleware } = require('../Middlewares/ErrorHandler.Middlewa
 
 const api_v1_router = require('express').Router();
 
+
+// todo: handle req.body sanitization
 api_v1_router.use('/users', user_router);
 api_v1_router.use(errorHandlerMiddleware);
 
