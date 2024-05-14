@@ -1,5 +1,6 @@
 const { UserModel } = require("../Models");
 const { UserIntegrityService } = require("../Integrity");
+const { NotFoundError } = require("../Errors");
 
 class UserService {
   constructor({ firm_id, user_id }) {
@@ -21,14 +22,14 @@ class UserService {
     return await this.getUserById(created_user.id);
   }
 
-  static async getUserById(user_id) {
+  static async getUserById({ user_id }) {
     const user = await UserModel.findOne({
       where: {
         id: user_id,
       },
     });
     if (!user) {
-      throw new Error(UserServiceErrorMessages.NO_USER_FOUND);
+      throw new NotFoundError(UserServiceErrorMessages.NO_USER_FOUND);
     }
     return user;
   }

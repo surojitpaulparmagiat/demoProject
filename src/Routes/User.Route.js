@@ -14,6 +14,11 @@ user_router.post(
   }),
   UserController.createUserController,
 );
+
+user_router.get("/:user_id", UserController.getUserController);
+
+
+
 module.exports = {
   user_router,
 };

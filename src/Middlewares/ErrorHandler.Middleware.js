@@ -1,10 +1,9 @@
-const errorHandlerMiddleware = (error, req, res,next) => {
-  let httpErrorCode = 404;
-  let httpErrorMessage = "something went wrong";
-  const errors = error?.errors ?? [];
-  res.status(httpErrorCode).json({
+const errorHandlerMiddleware = (error, req, res, next) => {
+  const default_http_error_message = "something went wrong";
+  const errors = error?.errors ?? [default_http_error_message];
+  res.status(error?.http_code).json({
     success: false,
-    message: error.message ?? httpErrorMessage,
+    message: error.message ?? default_http_error_message,
     code: error?.code,
     type: error.constructor.name,
     errors,

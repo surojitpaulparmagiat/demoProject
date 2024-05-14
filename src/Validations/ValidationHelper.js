@@ -1,16 +1,9 @@
-// todo: need a function that take a schema object, an error code.
-// then it return an express middleware that validate the request body against the schema
-// somehow we need to handle multiple errors that could be returned from the schema validation
+// need a function that takes a schema object, an error code.
+// then it returns an express middleware that validates the request body against the schema.
+// somehow, we need to handle multiple errors that could be returned from the schema validation
 // we need to concat them into one error message by joining with a new line "\n"
-
-class ValidationError extends Error {
-  constructor(message, http_error_code, errors) {
-    super(message);
-    this.http_error_code = http_error_code;
-    this.errors = errors;
-  }
-}
-
+const {ValidationError} = require("../Errors");
+;
 const JoiValidationRequestWrapper = ({ schema, http_error_code }) => {
   return (req, res, next) => {
     const body = req.body;
@@ -24,14 +17,8 @@ const JoiValidationRequestWrapper = ({ schema, http_error_code }) => {
       },
     });
     if (error) {
-      const error_message = error.details
-        .map((detail) => detail.message)
-        .join("\n");
-
       const error_messages = error.details.map((detail) => detail.message);
-      return next(
-        new ValidationError(error_message, http_error_code, error_messages),
-      );
+      return next(new ValidationError(error_messages, http_error_code));
     } else {
       return next();
     }
