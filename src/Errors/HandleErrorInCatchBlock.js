@@ -1,4 +1,4 @@
-const {SingleError,MultipleError} = require("./index");
+const { SingleError, MultipleError } = require('./index');
 
 /**
  * Handle catch block error
@@ -19,5 +19,5 @@ const propagateCatchBlockError = (error) => {
   });
 };
 module.exports = {
-    propagateCatchBlockError,
-}
+  propagateCatchBlockError,
+};

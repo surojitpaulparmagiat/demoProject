@@ -1,7 +1,8 @@
-const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../Configs/Db.Config");
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../Configs/Db.Config');
 
 class UserModel extends Model {}
+
 UserModel.init(
   {
     id: {
@@ -43,8 +44,8 @@ UserModel.init(
     },
 
     language_preference: {
-      type: DataTypes.ENUM("en", "ar"),
-      defaultValue: "ar",
+      type: DataTypes.ENUM('en', 'ar'),
+      defaultValue: 'ar',
       allowNull: false,
     },
     profile_picture: {
@@ -56,13 +57,13 @@ UserModel.init(
       allowNull: false,
     },
     sex: {
-      type: DataTypes.ENUM("M", "F", "O"),
+      type: DataTypes.ENUM('M', 'F', 'O'),
       allowNull: false,
     },
 
     status: {
-      type: DataTypes.ENUM("active", "deleted", "suspended"),
-      defaultValue: "active",
+      type: DataTypes.ENUM('active', 'deleted', 'suspended'),
+      defaultValue: 'active',
       index: true,
     },
     verified_email: {
@@ -80,8 +81,8 @@ UserModel.init(
   },
   {
     sequelize: sequelize,
-      tableName:"users"
-  },
+    tableName: 'users',
+  }
 );
 module.exports = {
   UserModel,

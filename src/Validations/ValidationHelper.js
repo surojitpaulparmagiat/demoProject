@@ -2,8 +2,7 @@
 // then it returns an express middleware that validates the request body against the schema.
 // somehow, we need to handle multiple errors that could be returned from the schema validation
 // we need to concat them into one error message by joining with a new line "\n"
-const {ValidationError} = require("../Errors");
-;
+const { ValidationError } = require('../Errors');
 const JoiValidationRequestWrapper = ({ schema, http_error_code }) => {
   return (req, res, next) => {
     const body = req.body;
@@ -12,7 +11,7 @@ const JoiValidationRequestWrapper = ({ schema, http_error_code }) => {
       errors: {
         escapeHtml: false,
         wrap: {
-          label: "",
+          label: '',
         },
       },
     });

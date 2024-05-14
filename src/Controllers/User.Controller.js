@@ -1,8 +1,15 @@
-const { SuccessErrorWrapper } = require("../Helpers/SuccessErrorWrapper");
-const { UserService } = require("../Services");
+const { SuccessErrorWrapper } = require('../Helpers/SuccessErrorWrapper');
+const { UserService } = require('../Services');
 
 class UserController {
   // controller functions are private and static
+
+  static createUserController = SuccessErrorWrapper(
+    this.#createUser,
+    'User created successfully',
+    201
+  );
+  static getUserController = SuccessErrorWrapper(this.#getUser, 'User fetched successfully', 200);
 
   /**
    * Create a new user
@@ -23,18 +30,6 @@ class UserController {
     const { user_id } = req.params;
     return await UserService.getUserById({ user_id });
   }
-
-  static createUserController = SuccessErrorWrapper(
-    this.#createUser,
-    "User created successfully",
-    201,
-  );
-
-  static getUserController = SuccessErrorWrapper(
-    this.#getUser,
-    "User fetched successfully",
-    200,
-  );
 }
 
 module.exports = { UserController };

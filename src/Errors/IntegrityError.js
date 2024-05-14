@@ -1,10 +1,11 @@
-const {SingleError} = require("./SingleError");
+const { SingleError } = require('./SingleError');
 
 class IntegrityError extends SingleError {
   constructor(message) {
-    super(message,400);
+    super(message, 400);
   }
 }
+
 module.exports = {
-    IntegrityError,
-}
+  IntegrityError,
+};

@@ -1,6 +1,6 @@
-const { UserModel } = require("../Models");
-const { UserIntegrityService } = require("../Integrity");
-const { NotFoundError } = require("../Errors");
+const { UserModel } = require('../Models');
+const { UserIntegrityService } = require('../Integrity');
+const { NotFoundError } = require('../Errors');
 
 class UserService {
   constructor({ firm_id, user_id }) {
@@ -40,5 +40,5 @@ module.exports = {
 };
 
 const UserServiceErrorMessages = {
-  NO_USER_FOUND: "No user found",
+  NO_USER_FOUND: 'No user found',
 };

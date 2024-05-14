@@ -1,5 +1,5 @@
-const {UserIntegrityService} = require('./User.Integrity');
+const { UserIntegrityService } = require('./User.Integrity');
 
 module.exports = {
-    UserIntegrityService,
-}
+  UserIntegrityService,
+};
